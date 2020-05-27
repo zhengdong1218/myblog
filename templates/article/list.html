@@ -1,0 +1,34 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    HomePage
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row mt-2">
+
+        {% for one_article in articles_list %}
+
+        <div class="col-4 mb-4">
+
+            <div class="card h-100">
+
+                <h4 class="card-header">{{ one_article.title }}</h4>
+
+                <div class="card-body">
+                    <p class="card-text">{{ one_article.body|slice:'100' }}...</p>
+                </div>
+
+                <div class="card-footer">
+                    <a href="{% url 'article:article_detail_article_urls' one_article.id %}" class="btn btn-primary">Read</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock content %}
